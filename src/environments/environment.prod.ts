@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://notificationproduction.up.railway.app',
+  apiUrl: 'https://loginapi.railway.internal',
 };
