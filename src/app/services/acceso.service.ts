@@ -17,12 +17,12 @@ export class AccesoService {
 
   registrarse(objeto: User): Observable<ResponseAcceso> {
     return this.http.post<ResponseAcceso>(
-      `${this.baseUrl}/registrarse`,
+      `${this.baseUrl}/auth/register`,
       objeto
     );
   }
 
   login(objeto: Login): Observable<ResponseAcceso> {
-    return this.http.post<ResponseAcceso>(`${this.baseUrl}/login`, objeto);
+    return this.http.post<ResponseAcceso>(`${this.baseUrl}/auth/login`, objeto);
   }
 }
