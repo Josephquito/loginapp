@@ -50,7 +50,10 @@ export class LoginComponent {
         console.log('Respuesta del backend:', data);
         if (data && data.token) {
           localStorage.setItem('token', data.token);
-          this.router.navigate(['/home']);
+          setTimeout(() => {
+            console.log('Token guardado. Redirigiendo al home...');
+            this.router.navigate(['/home']);
+          }, 100);
         } else {
           alert('Correo o clave incorrectas');
         }
