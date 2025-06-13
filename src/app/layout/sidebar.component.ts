@@ -13,16 +13,18 @@ import path from 'path';
   imports: [NgIf, MatIconModule, MatButtonModule],
 })
 export class SidebarComponent {
-  isCollapsed = signal(false);
+  isExpanded = signal(false);
 
   constructor(private router: Router) {}
 
-  toggleSidebar() {
-    this.isCollapsed.update((value) => !value);
+  handleClick(label: string, path: string) {
+    if (label === 'Inicio' || label === 'Más') {
+      this.isExpanded.set(true);
+    }
+    this.router.navigate([path]);
   }
 
-  navigateTo(path: string) {
-    this.router.navigate([path]);
-    this.isCollapsed.set(true);
+  toggleSidebar() {
+    this.isExpanded.set(!this.isExpanded());
   }
 }

@@ -1,31 +1,26 @@
-<div class="sidebar" [class.collapsed]="isCollapsed()">
-  <div class="header">"Usuario"</div>
-
+<div class="sidebar" [class.expanded]="isExpanded()">
   <ul class="menu">
-    <li (click)="navigateTo('/home')">
+    <li matTooltip="Inicio" (click)="handleClick('Inicio', '/home')">
       <mat-icon>home</mat-icon>
-      <span *ngIf="!isCollapsed()">Inicio</span>
+      <span *ngIf="isExpanded()">Inicio</span>
     </li>
-    <li (click)="navigateTo('/cuentas')">
-      <mat-icon>assignment_ind</mat-icon>
-      <span *ngIf="!isCollapsed()">Cuentas</span>
+
+    <li matTooltip="Cuentas">
+      <mat-icon>Cuentas</mat-icon>
     </li>
-    <li (click)="navigateTo('/notificaciones')">
+    <li matTooltip="Notificaciones">
       <mat-icon>notifications</mat-icon>
-      <span *ngIf="!isCollapsed()">Notificaciones</span>
     </li>
-    <li (click)="navigateTo('/clientes')">
-      <mat-icon>groups</mat-icon>
-      <span *ngIf="!isCollapsed()">Clientes</span>
+    <li matTooltip="Clientes">
+      <mat-icon>Clientes</mat-icon>
     </li>
-    <li (click)="navigateTo('/ganancias')">
-      <mat-icon>bar_chart</mat-icon>
-      <span *ngIf="!isCollapsed()">Ganancias</span>
+    <li matTooltip="Ganancias">
+      <mat-icon>Finanzas</mat-icon>
     </li>
   </ul>
 
-  <div class="footer" (click)="toggleSidebar()">
+  <div class="footer" matTooltip="Más" (click)="handleClick('Más', '/home')">
     <mat-icon>menu</mat-icon>
-    <span *ngIf="!isCollapsed()">Más</span>
+    <span *ngIf="isExpanded()">Más</span>
   </div>
 </div>
