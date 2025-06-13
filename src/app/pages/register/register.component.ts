@@ -33,7 +33,7 @@ export class RegisterComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]],
   });
-  register() {
+  registrarse() {
     if (this.formRegister.invalid) return;
 
     const newUser: Register = this.formRegister.value;
