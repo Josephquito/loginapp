@@ -1,0 +1,50 @@
+.sidebar {
+  width: 220px;
+  background: #fff;
+  height: 100vh;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid #eee;
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+.header {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+}
+
+.menu li {
+  display: flex;
+  align-items: center;
+  padding: 10px 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.menu li:hover {
+  background: #f0f0f0;
+}
+
+.menu li mat-icon {
+  margin-right: 10px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px;
+  font-weight: 500;
+}

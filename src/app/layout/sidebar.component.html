@@ -1,0 +1,31 @@
+<div class="sidebar" [class.collapsed]="isCollapsed()">
+  <div class="header">"Usuario"</div>
+
+  <ul class="menu">
+    <li (click)="navigateTo('/home')">
+      <mat-icon>home</mat-icon>
+      <span *ngIf="!isCollapsed()">Inicio</span>
+    </li>
+    <li (click)="navigateTo('/cuentas')">
+      <mat-icon>assignment_ind</mat-icon>
+      <span *ngIf="!isCollapsed()">Cuentas</span>
+    </li>
+    <li (click)="navigateTo('/notificaciones')">
+      <mat-icon>notifications</mat-icon>
+      <span *ngIf="!isCollapsed()">Notificaciones</span>
+    </li>
+    <li (click)="navigateTo('/clientes')">
+      <mat-icon>groups</mat-icon>
+      <span *ngIf="!isCollapsed()">Clientes</span>
+    </li>
+    <li (click)="navigateTo('/ganancias')">
+      <mat-icon>bar_chart</mat-icon>
+      <span *ngIf="!isCollapsed()">Ganancias</span>
+    </li>
+  </ul>
+
+  <div class="footer" (click)="toggleSidebar()">
+    <mat-icon>menu</mat-icon>
+    <span *ngIf="!isCollapsed()">Más</span>
+  </div>
+</div>
