@@ -14,12 +14,8 @@
           <input matInput formControlName="password" type="password" />
         </mat-form-field>
         <div class="flex">
-          <button matButton="filled" (click)="loginSesion()">Iniciar</button>
-          <button
-            matButton="filled"
-            (click)="register()"
-            style="margin-left: 8px"
-          >
+          <button mat-flat-button (click)="loginSesion()">Iniciar</button>
+          <button mat-flat-button (click)="register()" style="margin-left: 8px">
             Registarse
           </button>
         </div>
