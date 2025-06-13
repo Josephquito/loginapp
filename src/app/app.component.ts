@@ -1,6 +1,7 @@
-import { Component, inject, computed } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { Router, RouterOutlet } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { SidebarComponent } from './layout/sidebar.component';
 
 @Component({
@@ -11,10 +12,14 @@ import { SidebarComponent } from './layout/sidebar.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  private router = inject(Router);
+  showSidebar = true;
 
-  hideSidebar = computed(() => {
-    const hiddenRoutes = ['/login', '/register'];
-    return hiddenRoutes.includes(this.router.url);
-  });
+  constructor(private router: Router) {
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: any) => {
+        const hiddenRoutes = ['/login', '/register'];
+        this.showSidebar = !hiddenRoutes.includes(event.urlAfterRedirects);
+      });
+  }
 }
