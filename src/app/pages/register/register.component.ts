@@ -49,4 +49,8 @@ export class RegisterComponent {
       },
     });
   }
+
+  goLogin() {
+    this.router.navigate(['/login']);
+  }
 }
