@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccesoService } from '../../services/acceso.service';
-import { Register } from '../../interface/register';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -9,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { User } from '../../interface/user';
 
 @Component({
   selector: 'app-register',
@@ -36,7 +36,7 @@ export class RegisterComponent {
   registrarse() {
     if (this.formRegister.invalid) return;
 
-    const newUser: Register = this.formRegister.value;
+    const newUser: User = this.formRegister.value;
 
     this.accesoService.registrarse(newUser).subscribe({
       next: (data) => {
