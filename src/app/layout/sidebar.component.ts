@@ -21,7 +21,7 @@ export class SidebarComponent {
     this.isCollapsed.update((value) => !value);
   }
 
-  navigateTo(route: string) {
+  navigateTo(path: string) {
     this.router.navigate([path]);
     this.isCollapsed.set(true);
   }
