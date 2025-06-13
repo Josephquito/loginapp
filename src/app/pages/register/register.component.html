@@ -1,13 +1,13 @@
 <div class="card-container">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>Crear Cuenta</mat-card-title>
+      <mat-card-title>Registrarse</mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
-      <form>
+      <form [formGroup]="formRegister">
         <mat-form-field class="input-custom">
-          <mat-label>Name</mat-label>
+          <mat-label>Nombre</mat-label>
           <input matInput formControlName="name" />
         </mat-form-field>
 
@@ -17,19 +17,21 @@
         </mat-form-field>
 
         <mat-form-field class="input-custom">
-          <mat-label>Password</mat-label>
+          <mat-label>Contraseña</mat-label>
           <input matInput type="password" formControlName="password" />
         </mat-form-field>
 
         <div class="flex">
-          <button mat-flat-button color="primary">Crear Cuenta</button>
+          <button mat-flat-button color="primary" (click)="registrarse()">
+            Registrarse
+          </button>
           <button
             mat-stroked-button
             color="accent"
             routerLink="/login"
             style="margin-left: 8px"
           >
-            login
+            Ir al Login
           </button>
         </div>
       </form>

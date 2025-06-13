@@ -1,4 +1,7 @@
 import { Component, inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AccesoService } from '../../services/acceso.service';
+import { Register } from '../../interface/register';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -21,8 +24,29 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
+  private accesoService = inject(AccesoService);
+  private formBuilder = inject(FormBuilder);
   private router = inject(Router);
-  login() {
-    this.router.navigate(['/login']);
+
+  public formRegister: FormGroup = this.formBuilder.group({
+    name: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(8)]],
+  });
+  register() {
+    if (this.formRegister.invalid) return;
+
+    const newUser: Register = this.formRegister.value;
+
+    this.accesoService.registrarse(newUser).subscribe({
+      next: (data) => {
+        alert('Usuario registrado correctamente');
+        this.router.navigate(['/login']);
+      },
+      error: (error) => {
+        console.error('Error al registrar el usuario:', error);
+        alert('Error al registrarse');
+      },
+    });
   }
 }
