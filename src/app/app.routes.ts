@@ -12,19 +12,18 @@ export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   {
     path: 'clientes',
     component: ClientesComponent,
     canActivate: [AuthGuard],
-    data: { role: 'admin' },
+    data: { role: ['admin', 'user'] },
   },
   {
     path: 'cuentas',
     component: CuentasComponent,
     canActivate: [AuthGuard],
-    data: { role: 'user' }, // por ejemplo
+    data: { role: ['admin', 'user'] }, // por ejemplo
   },
   {
     path: 'finanzas',
