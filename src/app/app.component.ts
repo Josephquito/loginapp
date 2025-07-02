@@ -2,12 +2,11 @@ import { Component } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { SidebarComponent } from './layout/sidebar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SidebarComponent, NgIf],
+  imports: [RouterOutlet, NgIf],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

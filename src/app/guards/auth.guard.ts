@@ -1,28 +1,34 @@
 import {
   CanActivate,
-  Router,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
+  Router,
 } from '@angular/router';
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { AuthService } from '../services/auth.service'; // ajusta según ruta
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private auth: AuthService) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    const token = window.localStorage.getItem('token');
+    const user = this.auth.getCurrentUser();
 
-    if (token) {
-      return true; // ✅ Permitir acceso si hay token
+    if (!user) {
+      this.router.navigate(['/login']);
+      return false;
     }
 
-    this.router.navigate(['/login']); // ❌ Redirigir si NO hay token
+    const expectedRole = route.data['role'];
+
+    if (!expectedRole || user.role === expectedRole) {
+      return true;
+    }
+
+    this.router.navigate(['/unauthorized']);
     return false;
   }
 }
