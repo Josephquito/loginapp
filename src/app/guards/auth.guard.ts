@@ -5,7 +5,7 @@ import {
   Router,
 } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { AuthService } from '../services/auth.service'; // ajusta según ruta
+import { AuthService } from '../services/auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
@@ -22,12 +22,14 @@ export class AuthGuard implements CanActivate {
       return false;
     }
 
-    const expectedRole = route.data['role'];
+    const expectedRoles = route.data['roles'] as string[] | undefined;
 
-    if (!expectedRole || user.role === expectedRole) {
+    // Si no se especifican roles, solo se requiere estar logueado
+    if (!expectedRoles || expectedRoles.includes(user.role)) {
       return true;
     }
 
+    // Si el rol del usuario no está autorizado
     this.router.navigate(['/unauthorized']);
     return false;
   }
