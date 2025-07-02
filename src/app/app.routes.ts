@@ -17,19 +17,19 @@ export const routes: Routes = [
     path: 'clientes',
     component: ClientesComponent,
     canActivate: [AuthGuard],
-    data: { role: ['admin', 'user'] },
+    data: { roles: ['admin', 'user'] },
   },
   {
     path: 'cuentas',
     component: CuentasComponent,
     canActivate: [AuthGuard],
-    data: { role: ['admin', 'user'] }, // por ejemplo
+    data: { roles: ['admin', 'user'] }, // por ejemplo
   },
   {
     path: 'finanzas',
     component: FinanzasComponent,
     canActivate: [AuthGuard],
-    data: { role: 'admin' }, // o ambos si lo deseas
+    data: { roles: 'admin' }, // o ambos si lo deseas
   },
   { path: 'unauthorized', component: UnauthorizedComponent },
 
